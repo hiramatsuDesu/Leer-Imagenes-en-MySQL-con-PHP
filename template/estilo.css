@@ -1,0 +1,29 @@
+body {
+    margin: 50px 0;
+}
+
+div {
+    border: 1px solid indigo;
+    background-color: blueviolet;
+    color: whitesmoke;
+    word-wrap: break-word;
+}
+
+.row {
+    border: 1px solid darkslateblue;
+    background-color: mediumslateblue;
+}
+
+@media (min-width: 576px) {
+    div {
+        /*max-width: 540px;*/
+        color: aqua;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px ) {
+    div {
+        /*max-width: 720px;*/
+        color: darkorange;
+    }
+}
