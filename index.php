@@ -19,120 +19,28 @@
 </head>
 <body>
     
-<section class="container">
-<div class="row">
-<div class="col-10">
-    <h1>Carrito de Compras<h1>
-</div>
-<div class="col-2">
-    <img src="template/icono.webp" width="50%">
-</div>
-</div>
-</section>
-
-
-<section class="container">
-<div class="row">
-    <div class="col-8">
-        
-        <h3>Seleccione el producto</h3>
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, explicabo reprehenderit, maxime architecto, repudiandae veniam odio harum mollitia ipsa aliquid atque dolor! Veniam libero iure eos reprehenderit nostrum quaerat quis.
-        </p>
-
-        <?php
-            include("recursos.php");
-            $listar = $producto->seleccionarProductos();
-            for($i=0; $i<count($listar); $i++){
-        ?>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                    <h5 class="card-title">
-                        <?php
-                            echo $listar[$i]['detalle'];
-                        ?>
-                    </h5>
-                    <p class="card-text">
-                        Código Producto: 
-                        <?php
-                            echo $listar[$i]['id_producto'];
-                        ?>
-                    </p>
-                    <p class="card-text">
-                        Precio por Unidad: $
-                        <?php
-                            echo $listar[$i]['precioUnitario'];
-                        ?>
-                    </p>
-                    <a href="carrito.php?id=<?php echo $listar[$i]['id_producto'] ?>" class="btn btn-primary">Agregar al carrito</a>
-                    </div>
-                </div>
-            </div>
+<section class="container bg-transparent text-dark">
+<div class="row bg-transparent text-dark">
+    <div class="col-12 bg-transparent text-dark">
+        <div class="jumbotron">
+            <h1 class="display-4">Carrito de compras</h1>
+            <p class="lead">Simulación de carrito de compras. Las imágenes de los productos están cargadas en una base de datos MySQL. Las mismas son leídas por PHP </p>
+            <p>Con el uso de la librería FPFD podemos emitir una factura.</p>
+            <hr class="my-4">
+            <p>
+            <br>Hiramatsu, Maria Jose.</br>
+            Programador Web Jr.</p>
+            <p class="text-right">
+                <a href="carritoCompras.php">
+                    <button type="button" class="btn btn-outline-success"><h2> Ir al Carrito  </h2> 
+                    </button>
+                </a>
+            </p>
         </div>
-        <?php
-            }
-        ?>
-  
     </div>
-    
-    <div class="col-4">
-        <div class="card">
-            <div class="card-body">
-                <h2>Tu Carrito</h2>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <a href="formCompra.php">
-                <button type="button" class="btn btn-outline-success">Finalizar Compra</button></a>
-                
-                <a href="#">
-                <button type="button" class="btn btn-outline-danger">Cancelar Compra</button></a>
-            </div>
-        </div>
-    
-        <?php
-                $listado = $operacion->mostrarVenta();
-                if($listado){
-                    for ($i=0; $i <count($listado) ; $i++) { 
-            ?>
-        <div class="card">
-            <div class="card-header">
-                Nro Operacion: 
-                <?php
-                    echo $listado[$i]['id_operacion'];
-                ?>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                <?php
-                    echo $listado[$i]['detalle'];
-                ?>
-                </h5>
-                <p class="card-text">
-                    Precio: $
-                    <?php
-                        echo $listado[$i]['total'];
-                    ?>
-                </p>
-                <a href="eliminarCarrito.php?clave=<?php echo $listado[$i]['id_operacion'] ?>" class="btn btn-primary">Eliminar</a>
-            </div>
-        </div>
-        <?php
-        }
-        }
-        ?>
-    </div>
-    
 </div>
 
 </section>
-
-
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

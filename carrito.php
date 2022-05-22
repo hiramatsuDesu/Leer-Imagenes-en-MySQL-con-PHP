@@ -14,6 +14,6 @@ $cant = 1;
 
 $operacion->insertarVenta($det, $prec, $cant, $codigo, $fecha, $hora);
 
-header("Location: index.php");
+header("Location: carritoCompras.php");
 
 ?>

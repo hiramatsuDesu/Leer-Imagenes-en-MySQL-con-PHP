@@ -1,29 +1,106 @@
 body {
     margin: 50px 0;
+    background-image: url("fondo.webp");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.container{
+    padding: 10px;
+    background-color: #d3e9f2;
+  
+}
+
+.card{
+    padding: 20px;;
 }
 
 div {
-    border: 1px solid indigo;
-    background-color: blueviolet;
-    color: whitesmoke;
     word-wrap: break-word;
+    background-color: #d3e9f2;
 }
 
 .row {
-    border: 1px solid darkslateblue;
-    background-color: mediumslateblue;
+    border-radius: 10px;
+ 
 }
 
-@media (min-width: 576px) {
+@media (max-width: 276px) {
+    body {
+        margin: 5px 0;
+        font-size: small;
+    }
+
+    .btn{
+        font-size: smaller;
+    }
+    .card-body{
+        font-size: smaller;
+    }
+    .row{
+        font-size: smaller;
+    }
+    .card{
+        font-size: smaller;
+    }
+    #icono{
+        width: 20%;
+    }
     div {
         /*max-width: 540px;*/
-        color: aqua;
+        color: rgb(0, 0, 0);
+        font-size: small;
+    }
+    label, input{
+        font-size: small;
+    }
+}
+
+@media (max-width: 276px) and (max-width: 576px){
+    body {
+        margin: 5px 0;
+        font-size: small;
+    }
+
+    .btn{
+        font-size: smaller;
+    }
+    .card-body{
+        font-size: smaller;
+    }
+    .row{
+        font-size: smaller;
+    }
+    .card{
+        font-size: smaller;
+    }
+    #icono{
+        width: 20%;
+    }
+    div {
+        /*max-width: 540px;*/
+        color: rgb(0, 0, 0);
+        font-size: small;
+    }
+    label, input{
+        font-size: small;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px){
+    body {
+        margin: 2px 0 0 0;
+        font-size: small;
+    }
+    div {
+        /*max-width: 540px;*/
+        color: rgb(0, 0, 0);
     }
 }
 
 @media (min-width: 768px) and (max-width: 1200px ) {
     div {
         /*max-width: 720px;*/
-        color: darkorange;
+        color: rgb(0, 0, 0);
     }
 }

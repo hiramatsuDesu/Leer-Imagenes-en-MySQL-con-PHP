@@ -1,0 +1,188 @@
+<form name="MiForm" id="MiForm" method="post" action="cargar.php" enctype="multipart/form-data">
+        <h4 class="text-center">Seleccione imagen a cargar</h4>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Archivos</label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control" id="image" name="image" multiple>
+          </div>
+          <button name="submit" class="btn btn-primary">Cargar Imagen</button>
+        </div>
+      </form>
+
+
+
+<?php
+if(isset($_POST["submit"])){
+    $revisar = getimagesize($_FILES["image"]["tmp_name"]);
+    if($revisar !== false){
+        $image = $_FILES['image']['tmp_name'];
+        $imgContenido = addslashes(file_get_contents($image));
+        
+        //Credenciales Mysql
+        $Host = 'localhost';
+        $Username = 'root';
+        $Password = 'root';
+        $dbName = 'images_db';
+        
+        //Crear conexion con la abse de datos
+        $db = new mysqli($Host, $Username, $Password, $dbName);
+        
+        // Cerciorar la conexion
+        if($db->connect_error){
+            die("Connection failed: " . $db->connect_error);
+        }
+        
+        
+        //Insertar imagen en la base de datos
+        $insertar = $db->query("INSERT into images_tabla (imagenes, creado) VALUES ('$imgContenido', now())");
+        // COndicional para verificar la subida del fichero
+        if($insertar){
+            echo "Archivo Subido Correctamente.";
+        }else{
+            echo "Ha fallado la subida, reintente nuevamente.";
+        } 
+        // Sie el usuario no selecciona ninguna imagen
+    }else{
+        echo "Por favor seleccione imagen a subir.";
+    }
+}
+
+
+
+
+
+
+<?php
+if(!empty($_GET['id'])){
+    //Credenciales de conexion
+    $Host = 'localhost';
+    $Username = 'root';
+    $Password = 'root';
+    $dbName = 'images_db';
+    
+    //Crear conexion mysql
+    $db = new mysqli($Host, $Username, $Password, $dbName);
+    
+    //revisar conexion
+    if($db->connect_error){
+       die("Connection failed: " . $db->connect_error);
+    }
+    
+    //Extraer imagen de la BD mediante GET
+    $result = $db->query("SELECT imagenes FROM images_tabla WHERE id = {$_GET['id']}");
+    
+    if($result->num_rows > 0){
+        $imgDatos = $result->fetch_assoc();
+        
+        //Mostrar Imagen
+        header("Content-type: image/jpg"); 
+        echo $imgDatos['imagenes']; 
+    }else{
+        echo 'Imagen no existe...';
+    }
+}
+?>
+
+
+
+
+<h3>Cargar Productos: </h3>
+        <form action="protegidos/cargarProducto.php" method="POST" enctype="multipart/form-data">
+            <label>Detalle: </label><br>
+            <input type="text" maxlength="100" name="detalle"><br>
+
+            <label>Precio: </label><br>
+            <input type="double" name="precio"><br>
+
+            <label>Cantidad de Unidades: </label><br>
+            <input type="number" name="cantidad"><br>
+
+            <label>Seleccine imagen</label><br>
+            <input type="file" name="image" multiple><br>
+
+            <input type="submit" value="Enviar">
+        </form>
+
+
+
+
+<?php
+
+include('recursos.php');
+
+$revisar=getimagesize($_FILES["image"]["tmp_name"]);
+if($revisar != false){
+    $image = $_FILES['image']['tmp_name'];
+    $imgContenido = addslashes(file_get_contents($image));
+}
+
+$producto->insertarProductos($_POST['detalle'], $_POST['precio'], $_POST['cantidad'], $imgContenido);
+
+header("Location: ../index.php?no");
+
+
+
+
+
+
+
+
+
+teclado 
+monitor
+mouse optico
+gavinete 
+auriculares
+auriculares bluetooth
+
+
+
+
+
+<?php
+$bd = mysqli_connect("sql102.epizy.com", "epiz_31782460", "Contra2022", "epiz_31782460_sitioShopp394Online") or exit("Error al conectarse a la base de datos ");
+?>
+
+
+
+
+
+
+
+
+
+
+<?php
+    include('clases/baseDatos.php');
+    include('clases/productos.php');
+    include('clases/cajero.php');
+    include('clases/venta.php');
+
+    define('HOST', 'sql102.epizy.com');
+    define('USUARIO', 'epiz_31782460');
+    define('CLAVE', 'wHNxogjsBW70P4');
+    define('BASE', 'epiz_31782460_sitioShopp394Online');
+
+    $base = new Base_Datos(HOST, USUARIO, CLAVE, BASE);
+    $producto = new Producto($base);
+    $caj = new Cajero($base);
+    $operacion = new Venta($base); 
+?>
+
+
+
+shop394online.infinityfreeapp.com	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

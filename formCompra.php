@@ -19,33 +19,26 @@
 </head>
 <body>
     
-<section class="container">
-<div class="row">
-<div class="col-10">
-    <h1>Carrito de Compras<h1>
-</div>
-<div class="col-2">
-    <img src="template/icono.webp" width="50%">
-</div>
-</div>
-</section>
+<?php
+include("header.php");
 
+?>
 
 <section class="container">
 <div class="row">
-    <div class="col-8">
+    <div class="col-md-8">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body bg-light text-dark">
                 <h2>Tu Carrito</h2>
             </div>
         </div>
-
+        
         <div class="card">
-            <div class="card-body">
-                <a href="index.php">
+            <div class="card-body bg-light text-dark">
+                <a href="carritoCompras.php">
                 <button type="button" class="btn btn-outline-success">Seguir Comprando</button></a>
                 
-                <a href="#">
+                <a href="tienda.php">
                 <button type="button" class="btn btn-outline-danger">Cancelar Compra</button></a>
             </div>
         </div>
@@ -56,14 +49,15 @@
                 if($listado){
                     for ($i=0; $i <count($listado) ; $i++) { 
             ?>
-        <div class="card">
-            <div class="card-header">
+            <br>
+        <div class="card bg-light text-dark">
+            <div class="card-header bg-light text-dark">
                 Nro Operacion: 
                 <?php
                     echo $listado[$i]['id_operacion'];
                 ?>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-light text-dark">
                 <h5 class="card-title">
                 <?php
                     echo $listado[$i]['detalle'];
@@ -84,15 +78,15 @@
         ?>
     </div>
 
-    <div class="col-4">
+    <div class="col-md-4">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body bg-light text-dark">
                 <h2>Complete sus datos</h2>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-body bg-light text-dark">
                 
                 <?php
                     $total=0;
@@ -103,20 +97,20 @@
                 <h4>Total $: <?php echo $total; ?></h4>
             </div>
         </div>
-        
+        <br>
         <div class="card">
-            <div class="card-body">
+            <div class="card-body bg-light text-dark">
                 <form action="fpdf/factura.php" method="POST">
                     <label>Nombre: </label><br>
-                    <input type="text" name="nombre" maxlength="100"><br>
+                    <input type="text" name="nombre" maxlength="100" required><br>
 
                     <label>Apellido: </label><br>
-                    <input type="text" name="apellido" maxlength="100"><br>
+                    <input type="text" name="apellido" maxlength="100" required><br>
 
                     <label>Cel: (sin el cero y sin el 15)</label><br>
-                    <input type="number" name="tel" maxlength="10"><br><br>
+                    <input type="number" name="tel" maxlength="10" required><br><br>
 
-                    <input type="submit" value="enviar">
+                    
                    
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
@@ -124,7 +118,7 @@
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade bg-transparent text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -134,7 +128,7 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                        Para finalizar la compra haga click en "Generar factura". Si no desea continuar con la compra puede seleccionar "Cerrar".
+                        Si ha completado correctamente los datos haga click en "Generar factura". Si no desea continuar con la compra puede seleccionar "Cerrar".
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -158,7 +152,10 @@
 
 </section>
 
+<?php
+include("footer.php");
 
+?>
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
